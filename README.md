@@ -1,2 +1,2 @@
 # JAVA-PROJECT
-This project 
+This repository contains a project that implements "EXPENSE TRACKER" 
