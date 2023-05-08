@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 public class ViewSpending extends javax.swing.JFrame {
 
     /** Creates new form ViewSpending */
-    public ViewSpending() {
+    private String phon_number;
+    public ViewSpending(String phon_number) {
+        this.phon_number = phon_number;
         initComponents();
         d1.setSelectableDateRange(null, new java.util.Date());
         dd1.setSelectableDateRange(null, new java.util.Date());
@@ -337,7 +339,7 @@ public class ViewSpending extends javax.swing.JFrame {
             }
             java.sql.Date dt1=new java.sql.Date(d1.getDate().getTime());
             java.sql.Date dt2=new java.sql.Date(d2.getDate().getTime());
-            ResultSet rs=db.DbConnect.st.executeQuery("select * from expenses where edate>='"+dt1+"' and edate<='"+dt2+"' order by edate asc");
+            ResultSet rs=db.DbConnect.st.executeQuery("select * from expenses join users on expenses.phone_number=users.phone_number where expenses.phone_number="+phon_number+" and edate>='"+dt1+"' and edate<='"+dt2+"' order by edate asc");
             int total=0;
             while(rs.next()){
                 int t=rs.getInt("eamount");
@@ -377,10 +379,7 @@ public class ViewSpending extends javax.swing.JFrame {
                                     dd1.getDate().getTime());
             java.sql.Date dt2=new java.sql.Date(
                                     dd2.getDate().getTime());
-            ResultSet rs=db.DbConnect.st.executeQuery(
-                    "select * from expenses where edate>='"+
-                dt1+"' and edate<='"+dt2+"' and ecategory='"+
-                            c+"' order by edate asc");
+            ResultSet rs=db.DbConnect.st.executeQuery("select * from expenses join users on expenses.phone_number=users.phone_number where expenses.phone_number="+phon_number+" and edate>='"+dt1+"' and edate<='"+dt2+"' and ecategory='"+c+"' order by edate asc");
             int total=0;
             while(rs.next()){
                 int t=rs.getInt("eamount");

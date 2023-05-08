@@ -45,6 +45,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setBackground(new java.awt.Color(0, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN");
@@ -66,6 +67,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(51, 255, 0));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("LOGIN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setLabel("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +84,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(0, 204, 204));
         jButton3.setText("Forgot Password?");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,22 +186,46 @@ public class Login extends javax.swing.JFrame {
         try{
             String phnu = usern.getText();
             String password = pass.getText();
-            
+            int flag =0;
             if(!phnu.equals("") && !password.equals("")){
                 if(phnu.length()==10){
+                    ResultSet rs1 = db.DbConnect.st.executeQuery("select * from users where phone_number = '"+phnu+"'");
+                    if(!rs1.next()){
+                        JOptionPane.showMessageDialog(null,"Invalid Phone Number.");
+                        int r=JOptionPane.showConfirmDialog(null,"Do you want to register?", "Registration Confirmation",JOptionPane.YES_NO_OPTION);
+                        if(r==JOptionPane.YES_OPTION){
+                            new Registration().setVisible(true);
+                        }
+                    }
                     ResultSet rs = db.DbConnect.st.executeQuery("select * from users where phone_number = '"+phnu+"'");
                     while(rs.next()){
                         String pas = rs.getString("password");
                         String userna = rs.getString("uname");
-                        if(pas.equals(password)){
-                            JOptionPane.showMessageDialog(null,"LOGIN SUCCESS. WELCOME '"+userna+"'");
-                            SpendingTracker obj = new SpendingTracker(phnu);
-                            obj.setVisible(true);
+                        String phoone = rs.getString("phone_number");
+                        if(phoone.equals(phnu)){
+                            if(pas.equals(password)){
+                                JOptionPane.showMessageDialog(null,"LOGIN SUCCESS. WELCOME '"+userna.toUpperCase()+"'");
+                                new SpendingTracker(phnu).setVisible(true);
+                                flag =1;   
+                                break;
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Invalid Password");
+                                break;
+                            }
+                        }else{
+                            if(flag ==0){
+                        JOptionPane.showMessageDialog(null, "Invalid Phone Number");
+                        int r=JOptionPane.showConfirmDialog(null,"Do you want to register?", "Registration Confirmation",JOptionPane.YES_NO_OPTION);
+                        if(r==JOptionPane.YES_OPTION){
+                            new Registration().setVisible(true);
                         }
-                        else{
-                            JOptionPane.showMessageDialog(null, "Invalid Username/Password");
                         }
+                        
+                                     
                     }
+                    }
+                    
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Please Enter 10 digit phone number");
@@ -215,6 +249,10 @@ public class Login extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_usernKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new ForgotPassword().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+import java.awt.HeadlessException;
+import java.sql.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,11 +34,11 @@ public class ForgotPassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        phnumber = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        np = new javax.swing.JTextField();
+        cp = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,11 +65,22 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         jLabel2.setText("Phone Number:");
 
+        phnumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phnumberKeyTyped(evt);
+            }
+        });
+
         jLabel3.setText("New Password:");
 
         jLabel4.setText("Confirm Password:");
 
-        jButton1.setText("REGISTER");
+        jButton1.setText("RESET");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,9 +103,9 @@ public class ForgotPassword extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addGap(32, 32, 32)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
+                            .addComponent(phnumber)
+                            .addComponent(np)
+                            .addComponent(cp, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -98,16 +113,16 @@ public class ForgotPassword extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(np, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -136,6 +151,60 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void phnumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phnumberKeyTyped
+
+        char ch=evt.getKeyChar();
+        if(!Character.isDigit(ch)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_phnumberKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+        String s1 = phnumber.getText();
+        String new_password = np.getText();
+        String confirm_password = cp.getText();
+        int flag =0;
+        if(!s1.equals("") && !new_password.equals("") && !confirm_password.equals("")){
+            if(s1.length()==10){
+                ResultSet rs = db.DbConnect.st.executeQuery("select * from users");
+                while(rs.next()){
+                    String ph1 = rs.getString("phone_number");
+                    if(ph1.equals(s1)){
+                        if(new_password.equals(confirm_password)){
+                            db.DbConnect.st.executeUpdate("update users set password = '"+confirm_password+"' where phone_number = '"+s1+"'");
+                            flag =1;
+                            break;
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Passwords don't match");
+                            flag =2;
+                            break;
+                        }
+                    }
+                }
+                if(flag == 1){
+                    JOptionPane.showMessageDialog(null,"Password reset successfully!");
+                    new Login().setVisible(true);
+                }
+                else if(flag == 0){
+                    JOptionPane.showMessageDialog(null, "Please enter a valid Phone Number!");
+
+                }
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please enter 10 digit phone number!");
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Please fill out all the details!");
+        }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +242,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cp;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -180,8 +250,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField np;
+    private javax.swing.JTextField phnumber;
     // End of variables declaration//GEN-END:variables
 }
