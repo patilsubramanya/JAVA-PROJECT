@@ -1,4 +1,7 @@
 # JAVA-PROJECT  
+## ABOUT  
+PROJECT TITLE:- EXPENSE TRACKER.  
+This project is developed by @patilsubramanya and @Hritsinha8 as a part of our academics MSc in "DATA SCIENCE". This project was started in the month of April 2023 and was finished by first week of May 2023 under the guidance of ALWYN JOSEPH.
 ## DATABASE INFORMATION:  
 * The database "expensetracker" mainly have three tables naming:  
 * USERS: which stores the user's information such as name, username, password and phone number.  
