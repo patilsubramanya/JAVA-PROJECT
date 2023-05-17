@@ -26,6 +26,6 @@ In this table you can see five field namely eid(which is an auto incrementing fi
 This was all about the database which is being used in this project.  
 Further, let's move to the working of the project.  
 * There are some necessary file which I felt are important to run this porject are:  
- * mysql-connector-j-8.0.32 :- This is a jar file which will help to connect the project to your SQL database.  
- * jfreechart-1.0.19 :- This jar file will help to plot you any kind of plots in your project. In my project I have used pie chart for showing expenses.  
- * jcalendar-1.4 :- This jar file will help you add additional date/time funcitons like date picker, day chooser and many more. In my porject I have used date picker for selecting date while adding any expense.
+     mysql-connector-j-8.0.32 :- This is a jar file which will help to connect the project to your SQL database.  
+     jfreechart-1.0.19 :- This jar file will help to plot you any kind of plots in your project. In my project I have used pie chart for showing expenses.  
+     jcalendar-1.4 :- This jar file will help you add additional date/time funcitons like date picker, day chooser and many more. In my porject I have used date picker for        selecting date while adding any expense.
