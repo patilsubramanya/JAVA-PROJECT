@@ -16,5 +16,9 @@ can't be left empty) and this field is parent coloumn of phone number coloumn in
 
 * CATEGORY_INFO: This table stores the data of all the categories which will be available for users while adding expense. This table has only one coloum "category" in which 
 all the cateogries will be stored.  
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/01f278a3-0c98-4324-9bbf-d8fd0e6e0e70)
+
 * EXPENSES: This table has expense_id, expense_date, expense_amount, expense_category as it's fields. After a user logs in, and adds any expense, the expense details will be
 stored in this table.
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/a76e6be6-6566-475e-a2a2-68a078cc9cdd)
+
