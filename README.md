@@ -10,15 +10,14 @@ As we all spend money, sometimes without even realising we just run out of the b
 * CATGORY_INFO: which stores the information about categories available for user to add for the expense.  
 * EXPENSES: This table stores all the expenses add by all the users.  
 ## DESCRIPTION OF TABLES:  
-* USERS: This table stores the user's personal information such as name, username, password and phone number where phone number is primary key(i.e. this field in the table
-can't be left empty) and this field is parent coloumn of phone number coloumn in expense table. 
+* USERS: This table stores the user's personal information such as name, username, password and phone number where phone number is primary key and this field is parent coloumn of phone number coloumn in expense table. 
 ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/98a43551-60b8-48d6-9a23-2e46edc63415)  
-As you can see in the table description where no feild in the table can be null which means at the time of registering user can't leave any field empty. While registering user is asked with User's name(uname), username(username), password(password) and users'phone number(phone_number), Here you can see phone number's key as PRI which means primary key which tells that a feild which is set to primary key can't be null, can't be repeated. Making this feild as primary key makes sense as phone number can't be repeated i.e one phone number can't be possesedby more than one user.
+As you can see in the table description where no field in the table can be null which means at the time of registering user can't leave any field empty. While registering user is asked with User's name(uname), username(username), password(password) and users'phone number(phone_number), Here you can see phone number's key as PRI which means primary key, which tells that a field which is set to primary key can't be null, can't be repeated. Making this field as primary key makes sense as phone number can't be repeated i.e one phone number can't be possesed by more than one user.  
 
 * CATEGORY_INFO: This table stores the data of all the categories which will be available for users while adding expense. This table has only one coloum "category" in which 
 all the cateogries will be stored.  
 ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/01f278a3-0c98-4324-9bbf-d8fd0e6e0e70)  
-As you can see in the description of the table which says that
+This is not a complicated table as such, because it has only one coulumn in it which will store the categories add by user. Whenever user adds any category, it will be stored in this table.
 
 * EXPENSES: This table has expense_id, expense_date, expense_amount, expense_category as it's fields. After a user logs in, and adds any expense, the expense details will be
 stored in this table.
