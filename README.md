@@ -11,7 +11,9 @@ As we all spend money, sometimes without even realising we just run out of the b
 * EXPENSES: This table stores all the expenses add by all the users.  
 ## DESCRIPTION OF TABLES:  
 * USERS: This table stores the user's personal information such as name, username, password and phone number where phone number is primary key(i.e. this field in the table
-can't be left empty) and this field is parent coloumn of phone number coloumn in expense table.  
+can't be left empty) and this field is parent coloumn of phone number coloumn in expense table. 
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/98a43551-60b8-48d6-9a23-2e46edc63415)
+
 * CATEGORY_INFO: This table stores the data of all the categories which will be available for users while adding expense. This table has only one coloum "category" in which 
 all the cateogries will be stored.  
 * EXPENSES: This table has expense_id, expense_date, expense_amount, expense_category as it's fields. After a user logs in, and adds any expense, the expense details will be
