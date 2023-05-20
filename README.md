@@ -31,4 +31,14 @@ Further, let's move to the working of the project.
     * jcalendar-1.4 :- This jar file will help you add additional date/time funcitons like date picker, day chooser and many more. In my porject I have used date picker for        selecting date while adding any expense.  
  ## RUNNING OF APPLICATION  
  * This part includes of how the application works.  
-     When the user will run 
+ When the user will run this application, user will be asked for either registration or login.  
+ * Login Page
+ ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/854f3152-d619-4cd4-8a91-109a667e39be)  
+ In this user can login with the credentials.  
+ If the user is new to the application user can register by clicking "new user".  
+ ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/60809dc9-fe27-49e7-b48e-6c9b32b9de34)  
+Once the user has registered it will ask the user to login with the credentials given at the time of registeration.  
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/dc355a69-7a31-4bb7-8483-8812f0f0f888)  
+After the user has entered correct login credentials, the user will be logged in and will be entered in the application.  
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/0f59b739-2e41-48ff-b0d0-cba212548349)  
+So, this is how the user will be welcomed and the home page looks like.  
