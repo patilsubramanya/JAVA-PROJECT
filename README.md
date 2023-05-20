@@ -32,7 +32,7 @@ Further, let's move to the working of the project.
  ## RUNNING OF APPLICATION  
  * This part includes of how the application works.  
  When the user will run this application, user will be asked for either registration or login.  
- * Login Page
+ * Login Page  
  ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/854f3152-d619-4cd4-8a91-109a667e39be)  
  In this user can login with the credentials.  
  If the user is new to the application user can register by clicking "new user".  
