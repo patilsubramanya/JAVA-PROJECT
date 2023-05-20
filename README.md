@@ -36,6 +36,7 @@ Further, let's move to the working of the project.
  ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/854f3152-d619-4cd4-8a91-109a667e39be)  
  In this user can login with the credentials.  
  If the user is new to the application user can register by clicking "new user".  
+ * Registration Page  
  ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/60809dc9-fe27-49e7-b48e-6c9b32b9de34)  
 Once the user has registered it will ask the user to login with the credentials given at the time of registeration.  
 ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/dc355a69-7a31-4bb7-8483-8812f0f0f888)  
