@@ -42,3 +42,10 @@ Once the user has registered it will ask the user to login with the credentials 
 After the user has entered correct login credentials, the user will be logged in and will be entered in the application.  
 ![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/0f59b739-2e41-48ff-b0d0-cba212548349)  
 So, this is how the user will be welcomed and the home page looks like.  
+As you can see in the above image, it shows recent 28 days transactions. In this page, you can add expenses to your account with appropriate details of the expense. Once you have added the expense it will be displayed in the below table. Now, let's assume while adding any expense, you don't have the category for that expense, you can add expense according to your choice.  
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/406aa487-1286-4ad6-ab5b-fcd43b61806d)  
+When you click on the add category button in the home page, it will pop up this window in which you can add new category, or delete any category. But when you add any category, it will not be displayed on it's own, you have to click on the refresh button next to add new category button.  
+Now let's say you want to delete some transaction you can just click on that transaction and click remove button which will remove that particular transaction.  
+![image](https://github.com/patilsubramanya/JAVA-PROJECT/assets/118504626/4f84c640-f7de-408e-99a1-51fe807cd495)  
+for instance, if you want to remove this particular transaction which has been selected, just click on that transaction and then click remove.  
+Now let's move to see 
